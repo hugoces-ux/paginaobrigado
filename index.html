@@ -15,8 +15,11 @@
   --text-soft: #5c5449;
   --text-muted: #8a8073;
   --accent: #8b5a2b;
+  --accent-hover: #6d4622;
   --divider: #d9d0c1;
   --shadow: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-cta: 0 4px 16px rgba(139, 90, 43, 0.15);
+  --shadow-cta-hover: 0 6px 20px rgba(139, 90, 43, 0.25);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,8 +30,11 @@
     --text-soft: #b4a998;
     --text-muted: #7a6f5f;
     --accent: #c99b6b;
+    --accent-hover: #d9ab7c;
     --divider: #33291d;
     --shadow: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-cta: 0 4px 16px rgba(201, 155, 107, 0.2);
+    --shadow-cta-hover: 0 6px 20px rgba(201, 155, 107, 0.3);
   }
 }
 
@@ -39,8 +45,11 @@
   --text-soft: #b4a998;
   --text-muted: #7a6f5f;
   --accent: #c99b6b;
+  --accent-hover: #d9ab7c;
   --divider: #33291d;
   --shadow: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-cta: 0 4px 16px rgba(201, 155, 107, 0.2);
+  --shadow-cta-hover: 0 6px 20px rgba(201, 155, 107, 0.3);
 }
 
 * {
@@ -107,13 +116,13 @@ h1 {
   font-weight: 300;
   font-size: 20px;
   color: var(--text-soft);
-  margin-bottom: 56px;
+  margin-bottom: 40px;
 }
 
 @media (max-width: 640px) {
   .subtitle {
     font-size: 18px;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
   }
 }
 
@@ -125,6 +134,94 @@ p {
 p strong {
   color: var(--text);
   font-weight: 500;
+}
+
+.access-block {
+  background: var(--bg-card);
+  border: 1px solid var(--divider);
+  border-radius: 12px;
+  padding: 36px 32px;
+  margin: 40px 0;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 640px) {
+  .access-block {
+    padding: 28px 20px;
+  }
+}
+
+.access-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.access-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  .access-title {
+    font-size: 24px;
+  }
+}
+
+.access-desc {
+  color: var(--text-soft);
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  box-shadow: var(--shadow-cta);
+  letter-spacing: 0.01em;
+}
+
+.cta-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-cta-hover);
+  background: var(--accent-hover);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+.cta-arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.access-tip {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
 }
 
 .divider {
@@ -322,7 +419,16 @@ p strong {
 
   <p>Se você tá lendo isso, é porque você decidiu confiar no meu trabalho, e eu quero começar te dizendo o seguinte, isso não passa despercebido pra mim, e eu levo essa confiança a sério.</p>
 
-  <p>Nos próximos minutos, você vai receber um <strong>e-mail com o link do material completo no Notion</strong>, é ele que você vai acessar sempre que quiser voltar, e o endereço é sempre o mesmo, você pode salvar nos favoritos sem medo.</p>
+  <div class="access-block">
+    <div class="access-label">acesso liberado</div>
+    <h2 class="access-title">Seu material tá aqui</h2>
+    <p class="access-desc">Clica no botão abaixo pra acessar o ebook completo no Notion, e recomendo que você salve esse link nos favoritos, porque é o mesmo endereço pra sempre, todas as atualizações futuras chegam por ali.</p>
+    <a href="https://puzzled-sheet-aa4.notion.site/Por-Hugo-C-sar-3badc09debad8079a2e7e081848d1be6" class="cta-button" target="_blank" rel="noopener">
+      Acessar o material
+      <span class="cta-arrow">→</span>
+    </a>
+    <p class="access-tip">Você também recebe esse link por e-mail em alguns minutos, como backup.</p>
+  </div>
 
   <div class="card">
     <h2 class="card-title">Antes de você começar</h2>
@@ -347,19 +453,19 @@ p strong {
 
   <hr class="divider">
 
-  <div class="section-label">Enquanto o e-mail não chega</div>
+  <div class="section-label">Enquanto isso, me acompanha por aqui</div>
 
   <p>Se em algum momento algo fizer sentido pra você, se destravar um post, mudar como você pensa sobre criação, me conta no direct, eu leio pessoalmente, e é isso que me faz continuar refinando o material.</p>
 
   <div class="links">
-    <a href="https://instagram.com/hugocesarpsi" class="link-item">
+    <a href="https://instagram.com/hugocesarpsi" class="link-item" target="_blank" rel="noopener">
       <div class="link-content">
         <span class="link-title">@hugocesarpsi</span>
         <span class="link-desc">Instagram, é onde eu mais respondo</span>
       </div>
       <span class="arrow">→</span>
     </a>
-    <a href="https://ruidosilencioso.substack.com" class="link-item">
+    <a href="https://ruidosilencioso.substack.com" class="link-item" target="_blank" rel="noopener">
       <div class="link-content">
         <span class="link-title">Ruído Silencioso</span>
         <span class="link-desc">Minha newsletter semanal, onde eu penso longo</span>
@@ -371,7 +477,7 @@ p strong {
   <p class="frase-cabeca">Crie, mas enquanto cria,<br>não esqueça de você.</p>
 
   <div class="footer">
-    <p>Não recebeu o e-mail em 15 minutos? Checa a caixa de spam, e se não achar, me chama no <a href="https://instagram.com/hugocesarpsi">Instagram</a>.</p>
+    <p>Problemas pra acessar o material? Me chama no <a href="https://instagram.com/hugocesarpsi">Instagram</a> que eu resolvo pessoalmente.</p>
   </div>
 
 </div>
