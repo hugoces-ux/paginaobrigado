@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>obrigado — criar sem se perder no meio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f1ea;
+  --bg-card: #ede7dc;
+  --text: #1f1c18;
+  --text-soft: #5c5449;
+  --text-muted: #8a8073;
+  --accent: #8b5a2b;
+  --divider: #d9d0c1;
+  --shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17140f;
+    --bg-card: #221d15;
+    --text: #ede7dc;
+    --text-soft: #b4a998;
+    --text-muted: #7a6f5f;
+    --accent: #c99b6b;
+    --divider: #33291d;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #17140f;
+  --bg-card: #221d15;
+  --text: #ede7dc;
+  --text-soft: #b4a998;
+  --text-muted: #7a6f5f;
+  --accent: #c99b6b;
+  --divider: #33291d;
+  --shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 80px 32px 120px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 56px 24px 80px;
+  }
+  body {
+    font-size: 16px;
+  }
+}
+
+.mark {
+  display: inline-block;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  margin-bottom: 64px;
+  font-style: italic;
+}
+
+h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(48px, 10vw, 84px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 20px;
+  color: var(--text-soft);
+  margin-bottom: 56px;
+}
+
+@media (max-width: 640px) {
+  .subtitle {
+    font-size: 18px;
+    margin-bottom: 48px;
+  }
+}
+
+p {
+  color: var(--text-soft);
+  margin-bottom: 24px;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.divider {
+  height: 1px;
+  background: var(--divider);
+  margin: 56px 0;
+  border: none;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 32px;
+  margin: 40px 0;
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 24px;
+    margin: 32px 0;
+  }
+}
+
+.card-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--text);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.steps {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin: 24px 0 0;
+}
+
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 20px;
+  color: var(--text-soft);
+}
+
+.steps li:last-child {
+  margin-bottom: 0;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.steps li strong {
+  color: var(--text);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.link-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: var(--shadow);
+}
+
+.link-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.link-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.link-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.link-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.arrow {
+  color: var(--accent);
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.frase-cabeca {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--text);
+  text-align: center;
+  margin: 80px 0 0;
+  padding: 0 20px;
+}
+
+@media (max-width: 640px) {
+  .frase-cabeca {
+    font-size: 20px;
+    margin-top: 64px;
+  }
+}
+
+.frase-cabeca::before,
+.frase-cabeca::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--divider);
+  margin: 24px auto;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--divider);
+  padding-bottom: 1px;
+}
+
+.footer a:hover {
+  color: var(--text-soft);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <span class="mark">criar sem se perder no meio</span>
+
+  <h1>obrigado.</h1>
+  <p class="subtitle">agora começa a parte que importa.</p>
+
+  <p>Se você tá lendo isso, é porque você decidiu confiar no meu trabalho, e eu quero começar te dizendo o seguinte, isso não passa despercebido pra mim, e eu levo essa confiança a sério.</p>
+
+  <p>Nos próximos minutos, você vai receber um <strong>e-mail com o link do material completo no Notion</strong>, é ele que você vai acessar sempre que quiser voltar, e o endereço é sempre o mesmo, você pode salvar nos favoritos sem medo.</p>
+
+  <div class="card">
+    <h2 class="card-title">Antes de você começar</h2>
+    <p style="margin: 0;">Se você quer aproveitar de verdade, na minha experiência, vale seguir esses três passos:</p>
+    <ol class="steps">
+      <li>
+        <strong>Separa 40 minutos e um caderno.</strong>
+        Alguns momentos do material pedem escrita sua, e escrever no seu próprio lugar fixa muito melhor do que só ler.
+      </li>
+      <li>
+        <strong>Lê primeiro o bloco "como usar este material".</strong>
+        Ele é curto, e vai te mostrar por onde entrar em cada momento, sem você se perder no meio do caminho.
+      </li>
+      <li>
+        <strong>Aplica enquanto lê, não depois.</strong>
+        Método que você não aplica na hora, você esquece, e o material foi pensado pra ser trabalhado, não só consumido.
+      </li>
+    </ol>
+  </div>
+
+  <p>Uma última coisa, esse material é vivo, eu atualizo ele sempre que aprendo algo novo, refino algum modelo ou descubro uma trava recorrente nas DMs, e você recebe todas as atualizações futuras sem pagar de novo, é uma via só.</p>
+
+  <hr class="divider">
+
+  <div class="section-label">Enquanto o e-mail não chega</div>
+
+  <p>Se em algum momento algo fizer sentido pra você, se destravar um post, mudar como você pensa sobre criação, me conta no direct, eu leio pessoalmente, e é isso que me faz continuar refinando o material.</p>
+
+  <div class="links">
+    <a href="https://instagram.com/hugocesarpsi" class="link-item">
+      <div class="link-content">
+        <span class="link-title">@hugocesarpsi</span>
+        <span class="link-desc">Instagram, é onde eu mais respondo</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a href="https://ruidosilencioso.substack.com" class="link-item">
+      <div class="link-content">
+        <span class="link-title">Ruído Silencioso</span>
+        <span class="link-desc">Minha newsletter semanal, onde eu penso longo</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <p class="frase-cabeca">Crie, mas enquanto cria,<br>não esqueça de você.</p>
+
+  <div class="footer">
+    <p>Não recebeu o e-mail em 15 minutos? Checa a caixa de spam, e se não achar, me chama no <a href="https://instagram.com/hugocesarpsi">Instagram</a>.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
